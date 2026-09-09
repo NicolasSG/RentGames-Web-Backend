@@ -31,10 +31,10 @@ commit que referencia a issue (`Fixes #N`), e fechado.
 
 | # | Titulo | Encontrado em | Commit de correcao | Status |
 |---|---|---|---|---|
-| [#1](https://github.com/NicolasSG/RentGames-Web-Backend/issues/1) | Login invalido devolvia HTTP 409 em vez de 401 | MT-02 | [a7725e6](https://github.com/NicolasSG/RentGames-Web-Backend/commit/a7725e6) | Fechada |
-| [#2](https://github.com/NicolasSG/RentGames-Web-Backend/issues/2) | Impossivel criar o primeiro usuario ADMIN (bootstrap ausente) | Preparacao do MT-16 | [6f026ca](https://github.com/NicolasSG/RentGames-Web-Backend/commit/6f026ca) | Fechada |
-| [#3](https://github.com/NicolasSG/RentGames-Web-Backend/issues/3) | Excluir jogo com historico de alugueis derrubava 500 generico (violacao de FK) | MT-06 | [8dd8681](https://github.com/NicolasSG/RentGames-Web-Backend/commit/8dd8681) | Fechada |
-| [#4](https://github.com/NicolasSG/RentGames-Web-Backend/issues/4) | Aluguel atrasado aparecia com badge verde em vez de vermelho | MT-13 | [97816f3](https://github.com/NicolasSG/RentGames-Web-Backend/commit/97816f3) | Fechada |
+| [#1](https://github.com/NicolasSG/RentGames-Web-Backend/issues/1) | Login invalido devolvia HTTP 409 em vez de 401 | MT-02 | [13d534e](https://github.com/NicolasSG/RentGames-Web-Backend/commit/13d534e) | Fechada |
+| [#2](https://github.com/NicolasSG/RentGames-Web-Backend/issues/2) | Impossivel criar o primeiro usuario ADMIN (bootstrap ausente) | Preparacao do MT-16 | [0dda304](https://github.com/NicolasSG/RentGames-Web-Backend/commit/0dda304) | Fechada |
+| [#3](https://github.com/NicolasSG/RentGames-Web-Backend/issues/3) | Excluir jogo com historico de alugueis derrubava 500 generico (violacao de FK) | MT-06 | [3a20b64](https://github.com/NicolasSG/RentGames-Web-Backend/commit/3a20b64) | Fechada |
+| [#4](https://github.com/NicolasSG/RentGames-Web-Backend/issues/4) | Aluguel atrasado aparecia com badge verde em vez de vermelho | MT-13 | [88b4d04](https://github.com/NicolasSG/RentGames-Web-Backend/commit/88b4d04) | Fechada |
 
 ### 2.1 Resumo de cada bug
 

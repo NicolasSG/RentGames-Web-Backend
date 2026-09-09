@@ -23,36 +23,44 @@ https://github.com/NicolasSG/RentGames.)
 
 ```
 $ git log --oneline
-97816f3 Corrige badge de aluguel atrasado (verde -> vermelho) e adiciona README
-8dd8681 Corrige exclusao de jogo com historico de alugueis (500 -> 409)
-41cdb09 Integra o front-end da Etapa 8 com a API REST (Etapa 9)
-6f026ca Adiciona bootstrap automatico do primeiro usuario ADMIN
-a7725e6 Corrige login invalido para devolver 401 em vez de 409
-8ef3034 Cria back-end Spring Boot REST do RentGames (Etapa 9)
+3f365f0 Adiciona documentos de evidencia de testes/bugtracking e versionamento
+88b4d04 Corrige badge de aluguel atrasado (verde -> vermelho) e adiciona README
+3a20b64 Corrige exclusao de jogo com historico de alugueis (500 -> 409)
+a15e221 Integra o front-end da Etapa 8 com a API REST (Etapa 9)
+0dda304 Adiciona bootstrap automatico do primeiro usuario ADMIN
+13d534e Corrige login invalido para devolver 401 em vez de 409
+bf3fdb9 Cria back-end Spring Boot REST do RentGames (Etapa 9)
 ```
 
 | Commit | Descricao | Link |
 |---|---|---|
-| `8ef3034` | Cria o back-end Spring Boot REST (model/repository/service reaproveitados da Etapa 6 como beans do Spring, controllers REST, GlobalExceptionHandler) | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/8ef3034) |
-| `a7725e6` | Fixes #1 - login invalido devolve 401 | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/a7725e6) |
-| `6f026ca` | Fixes #2 - bootstrap automatico do primeiro ADMIN | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/6f026ca) |
-| `41cdb09` | Integra o front-end estatico da Etapa 8 (paginas + `store.js` reescrito para consumir a API REST) | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/41cdb09) |
-| `8dd8681` | Fixes #3 - exclusao de jogo com historico (FK) devolve 409 em vez de 500 | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/8dd8681) |
-| `97816f3` | Fixes #4 - badge de aluguel atrasado; adiciona README | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/97816f3) |
+| `bf3fdb9` | Cria o back-end Spring Boot REST (model/repository/service reaproveitados da Etapa 6 como beans do Spring, controllers REST, GlobalExceptionHandler) | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/bf3fdb9) |
+| `13d534e` | Fixes #1 - login invalido devolve 401 | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/13d534e) |
+| `0dda304` | Fixes #2 - bootstrap automatico do primeiro ADMIN | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/0dda304) |
+| `a15e221` | Integra o front-end estatico da Etapa 8 (paginas + `store.js` reescrito para consumir a API REST) | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/a15e221) |
+| `3a20b64` | Fixes #3 - exclusao de jogo com historico (FK) devolve 409 em vez de 500 | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/3a20b64) |
+| `88b4d04` | Fixes #4 - badge de aluguel atrasado; adiciona README | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/88b4d04) |
+| `3f365f0` | Adiciona os dois documentos de evidencia desta etapa | [ver](https://github.com/NicolasSG/RentGames-Web-Backend/commit/3f365f0) |
 
 Cada commit de correcao de bug referencia a Issue correspondente (`Fixes #N`), o que fecha
 a issue automaticamente no GitHub e cria um link direto entre o problema relatado e a
 mudanca de codigo que o resolveu - ver `docs/EVIDENCIAS-TESTES.md` para o detalhamento de
 cada bug.
 
+> **Nota sobre os hashes:** os 7 commits acima foram reescritos uma vez (mesmo conteudo,
+> mensagens sem a linha de coautoria de ferramenta de IA que a Claude Code inclui por
+> padrao) e o branch `main` foi atualizado com `git push --force`, a pedido explicito do
+> autor. As issues do GitHub permaneceram fechadas normalmente (o estado de uma issue nao
+> depende do commit continuar existindo com o mesmo hash).
+
 ## 3. Issues (bugtracking) vinculadas ao historico
 
 https://github.com/NicolasSG/RentGames-Web-Backend/issues?q=is%3Aissue+is%3Aclosed
 
-- [#1](https://github.com/NicolasSG/RentGames-Web-Backend/issues/1) - fechada por `a7725e6`
-- [#2](https://github.com/NicolasSG/RentGames-Web-Backend/issues/2) - fechada por `6f026ca`
-- [#3](https://github.com/NicolasSG/RentGames-Web-Backend/issues/3) - fechada por `8dd8681`
-- [#4](https://github.com/NicolasSG/RentGames-Web-Backend/issues/4) - fechada por `97816f3`
+- [#1](https://github.com/NicolasSG/RentGames-Web-Backend/issues/1) - fechada por `13d534e`
+- [#2](https://github.com/NicolasSG/RentGames-Web-Backend/issues/2) - fechada por `0dda304`
+- [#3](https://github.com/NicolasSG/RentGames-Web-Backend/issues/3) - fechada por `3a20b64`
+- [#4](https://github.com/NicolasSG/RentGames-Web-Backend/issues/4) - fechada por `88b4d04`
 
 ## 4. O que esta versionado
 
