@@ -1,0 +1,11 @@
+target/
+*.class
+*.log
+
+# credenciais reais de banco - nunca versionar
+src/main/resources/db.properties
+
+.idea/
+*.iml
+.vscode/
+nbproject/private/

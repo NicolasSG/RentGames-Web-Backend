@@ -1,0 +1,11 @@
+# Copie para "db.properties" (mesma pasta) e preencha com as credenciais do
+# seu MySQL local. Nao versionar o arquivo real (ver .gitignore) - a mesma
+# licao da Etapa 6: nunca commitar senha de banco em texto puro.
+#
+# Recomendado: nao usar o usuario "root" da aplicacao. Crie um usuario
+# dedicado com privilegios so no banco rentgames_db, por exemplo:
+#   CREATE USER 'rentgames_app'@'localhost' IDENTIFIED BY 'uma-senha-forte';
+#   GRANT SELECT, INSERT, UPDATE, DELETE ON rentgames_db.* TO 'rentgames_app'@'localhost';
+db.url=jdbc:mysql://localhost:3306/rentgames_db
+db.user=rentgames_app
+db.password=
