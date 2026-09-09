@@ -3,12 +3,14 @@ package com.rentgames.repository.jdbc;
 import com.rentgames.config.DatabaseConfig;
 import com.rentgames.model.Jogo;
 import com.rentgames.repository.JogoRepository;
+import com.rentgames.service.exception.RegraNegocioException;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -80,6 +82,12 @@ public class JogoRepositoryJdbc implements JogoRepository {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            // A FK alugueis.id_jogo -> jogos.id impede excluir um jogo que ja
+            // tem historico de aluguel. Sem este catch especifico, a excecao
+            // subia como RepositoryException generica e virava 500 sem
+            // explicar o motivo real (issues#3, Etapa 9).
+            throw new RegraNegocioException("Nao e possivel excluir um jogo que ja possui alugueis registrados.");
         } catch (SQLException e) {
             throw new RepositoryException("Erro ao excluir jogo " + id, e);
         }
