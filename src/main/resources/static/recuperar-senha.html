@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar senha - RentGames</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <span class="auth-brand__logo" aria-hidden="true">RG</span>
+      </div>
+      <h1 class="auth-title">Recuperar senha</h1>
+      <p class="auth-subtitle text-muted">Informe o e-mail da sua conta</p>
+
+      <form id="form-recuperar" novalidate>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="username" required aria-describedby="email-erro">
+          <span class="form-error" id="email-erro"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px;">Enviar instrucoes</button>
+      </form>
+
+      <div id="recuperar-sucesso" class="alert alert-success" role="status" hidden style="margin-top: 20px;">
+        Se o e-mail estiver cadastrado, voce recebera instrucoes de recuperacao em breve.
+      </div>
+
+      <p class="auth-footer" style="margin-top: 20px;"><a href="login.html">Voltar ao login</a></p>
+    </div>
+  </main>
+
+  <script src="js/store.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script>RentGames.Auth.iniciarRecuperarSenha();</script>
+</body>
+</html>

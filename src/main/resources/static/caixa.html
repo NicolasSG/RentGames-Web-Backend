@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixa - RentGames</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo</a>
+
+  <div class="app-shell">
+    <div class="nav-scrim"></div>
+    <aside class="sidebar">
+      <div class="sidebar__brand"><span class="sidebar__brand-logo" aria-hidden="true">RG</span> RentGames</div>
+      <nav class="sidebar__nav" aria-label="Menu principal">
+        <a class="sidebar__link" href="dashboard.html"><span class="sidebar__link-icon">🏠</span> Inicio</a>
+        <a class="sidebar__link" href="jogos.html"><span class="sidebar__link-icon">🎮</span> Jogos</a>
+        <a class="sidebar__link" href="clientes.html"><span class="sidebar__link-icon">👤</span> Clientes</a>
+        <a class="sidebar__link" href="alugueis.html"><span class="sidebar__link-icon">📦</span> Alugueis</a>
+        <a class="sidebar__link" href="caixa.html" aria-current="page"><span class="sidebar__link-icon">💰</span> Caixa</a>
+        <span data-somente-admin><a class="sidebar__link" href="usuarios.html"><span class="sidebar__link-icon">⚙️</span> Usuarios</a></span>
+      </nav>
+      <div class="sidebar__footer">
+        <button type="button" class="btn btn-block" data-logout>Sair</button>
+      </div>
+    </aside>
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button type="button" class="nav-toggle" data-nav-toggle aria-label="Abrir menu">☰</button>
+        <span class="topbar__title">Caixa</span>
+      </div>
+      <div class="topbar__user">
+        <span class="topbar__badge" data-usuario-nivel></span>
+        <span data-usuario-nome></span>
+      </div>
+    </header>
+
+    <main class="main" id="conteudo-principal">
+      <div class="page-header">
+        <div>
+          <h1>Caixa</h1>
+          <p class="page-header__subtitle text-muted">Fluxo de entradas e saidas financeiras</p>
+        </div>
+        <div class="stat-card" style="min-width:220px;">
+          <div class="stat-card__label">Saldo atual</div>
+          <div class="stat-card__value" id="caixa-saldo">R$ 0,00</div>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="section__title">Registrar transacao</h2>
+        <form id="form-transacao" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="descricao">Descricao *</label>
+              <input type="text" id="descricao" name="descricao" required aria-describedby="descricao-erro">
+              <span class="form-error" id="descricao-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="valor">Valor (R$) *</label>
+              <input type="number" id="valor" name="valor" min="0.01" step="0.01" required aria-describedby="valor-erro">
+              <span class="form-error" id="valor-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="data">Data *</label>
+              <input type="date" id="data" name="data" required aria-describedby="data-erro">
+              <span class="form-error" id="data-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="tipo">Tipo</label>
+              <select id="tipo" name="tipo">
+                <option value="ENTRADA">Entrada</option>
+                <option value="SAIDA">Saida</option>
+              </select>
+            </div>
+          </div>
+          <p class="hint" id="caixa-preview" style="margin-top:8px;"></p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Historico de transacoes</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Descricao</th><th>Tipo</th><th>Valor</th><th>Data</th></tr>
+            </thead>
+            <tbody id="transacoes-tbody"></tbody>
+          </table>
+          <p class="table-empty" id="transacoes-vazio">Nenhuma transacao registrada.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/caixa.js"></script>
+</body>
+</html>

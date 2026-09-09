@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios - RentGames</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo</a>
+
+  <div class="app-shell">
+    <div class="nav-scrim"></div>
+    <aside class="sidebar">
+      <div class="sidebar__brand"><span class="sidebar__brand-logo" aria-hidden="true">RG</span> RentGames</div>
+      <nav class="sidebar__nav" aria-label="Menu principal">
+        <a class="sidebar__link" href="dashboard.html"><span class="sidebar__link-icon">🏠</span> Inicio</a>
+        <a class="sidebar__link" href="jogos.html"><span class="sidebar__link-icon">🎮</span> Jogos</a>
+        <a class="sidebar__link" href="clientes.html"><span class="sidebar__link-icon">👤</span> Clientes</a>
+        <a class="sidebar__link" href="alugueis.html"><span class="sidebar__link-icon">📦</span> Alugueis</a>
+        <a class="sidebar__link" href="caixa.html"><span class="sidebar__link-icon">💰</span> Caixa</a>
+        <span data-somente-admin><a class="sidebar__link" href="usuarios.html" aria-current="page"><span class="sidebar__link-icon">⚙️</span> Usuarios</a></span>
+      </nav>
+      <div class="sidebar__footer">
+        <button type="button" class="btn btn-block" data-logout>Sair</button>
+      </div>
+    </aside>
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button type="button" class="nav-toggle" data-nav-toggle aria-label="Abrir menu">☰</button>
+        <span class="topbar__title">Usuarios</span>
+      </div>
+      <div class="topbar__user">
+        <span class="topbar__badge" data-usuario-nivel></span>
+        <span data-usuario-nome></span>
+      </div>
+    </header>
+
+    <main class="main" id="conteudo-principal">
+      <div class="page-header">
+        <div>
+          <h1>Usuarios</h1>
+          <p class="page-header__subtitle text-muted">Acesso restrito ao perfil ADMIN</p>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" id="usuarios-negado" role="alert" hidden>
+        Voce esta logado como FUNCIONARIO e nao tem permissao para gerenciar usuarios.
+        Entre com uma conta ADMIN para acessar esta pagina.
+      </div>
+
+      <div id="usuarios-conteudo">
+        <section class="section">
+          <h2 class="section__title">Cadastrar usuario</h2>
+          <form id="form-usuario" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="nomeCompleto">Nome *</label>
+                <input type="text" id="nomeCompleto" name="nomeCompleto" required aria-describedby="nomeCompleto-erro">
+                <span class="form-error" id="nomeCompleto-erro"></span>
+              </div>
+              <div class="form-field">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required aria-describedby="email-erro">
+                <span class="form-error" id="email-erro"></span>
+              </div>
+              <div class="form-field">
+                <label for="contato">Contato</label>
+                <input type="text" id="contato" name="contato">
+              </div>
+              <div class="form-field">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf">
+              </div>
+              <div class="form-field">
+                <label for="endereco">Endereco</label>
+                <input type="text" id="endereco" name="endereco">
+              </div>
+              <div class="form-field">
+                <label for="nivelPermissao">Nivel</label>
+                <select id="nivelPermissao" name="nivelPermissao">
+                  <option value="FUNCIONARIO">FUNCIONARIO</option>
+                  <option value="ADMIN">ADMIN</option>
+                </select>
+              </div>
+            </div>
+            <p class="hint">O usuario e criado com a senha inicial <strong>123456</strong>.</p>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="section">
+          <div class="table-toolbar">
+            <h2 class="section__title" style="margin-bottom:0;">Usuarios cadastrados</h2>
+            <input type="search" id="usuarios-busca" placeholder="Buscar por nome ou e-mail..." style="max-width:260px; padding:8px 12px; border-radius:6px; border:1px solid var(--color-border);">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Nivel</th><th></th></tr>
+              </thead>
+              <tbody id="usuarios-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

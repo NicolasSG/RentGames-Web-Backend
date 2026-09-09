@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentGames</title>
+  <meta http-equiv="refresh" content="0; url=login.html">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+  <p style="padding: 24px;">Redirecionando para <a href="login.html">login.html</a>...</p>
+  <script src="js/store.js"></script>
+  <script>
+    window.location.href = RentGames.Sessao.atual() ? "dashboard.html" : "login.html";
+  </script>
+</body>
+</html>

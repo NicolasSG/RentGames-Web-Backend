@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alugueis - RentGames</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo</a>
+
+  <div class="app-shell">
+    <div class="nav-scrim"></div>
+    <aside class="sidebar">
+      <div class="sidebar__brand"><span class="sidebar__brand-logo" aria-hidden="true">RG</span> RentGames</div>
+      <nav class="sidebar__nav" aria-label="Menu principal">
+        <a class="sidebar__link" href="dashboard.html"><span class="sidebar__link-icon">🏠</span> Inicio</a>
+        <a class="sidebar__link" href="jogos.html"><span class="sidebar__link-icon">🎮</span> Jogos</a>
+        <a class="sidebar__link" href="clientes.html"><span class="sidebar__link-icon">👤</span> Clientes</a>
+        <a class="sidebar__link" href="alugueis.html" aria-current="page"><span class="sidebar__link-icon">📦</span> Alugueis</a>
+        <a class="sidebar__link" href="caixa.html"><span class="sidebar__link-icon">💰</span> Caixa</a>
+        <span data-somente-admin><a class="sidebar__link" href="usuarios.html"><span class="sidebar__link-icon">⚙️</span> Usuarios</a></span>
+      </nav>
+      <div class="sidebar__footer">
+        <button type="button" class="btn btn-block" data-logout>Sair</button>
+      </div>
+    </aside>
+
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button type="button" class="nav-toggle" data-nav-toggle aria-label="Abrir menu">☰</button>
+        <span class="topbar__title">Alugueis</span>
+      </div>
+      <div class="topbar__user">
+        <span class="topbar__badge" data-usuario-nivel></span>
+        <span data-usuario-nome></span>
+      </div>
+    </header>
+
+    <main class="main" id="conteudo-principal">
+      <div class="page-header">
+        <div>
+          <h1>Alugueis</h1>
+          <p class="page-header__subtitle text-muted">Registre alugueis e devolucoes de jogos</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="section__title">Novo aluguel</h2>
+        <form id="form-aluguel" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="nomeCliente">Nome do cliente *</label>
+              <input type="text" id="nomeCliente" name="nomeCliente" required aria-describedby="nomeCliente-erro">
+              <span class="form-error" id="nomeCliente-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="contato">Contato *</label>
+              <input type="text" id="contato" name="contato" required aria-describedby="contato-erro">
+              <span class="form-error" id="contato-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf">
+            </div>
+            <div class="form-field">
+              <label for="endereco">Endereco *</label>
+              <input type="text" id="endereco" name="endereco" required aria-describedby="endereco-erro">
+              <span class="form-error" id="endereco-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="aluguel-jogo">Jogo *</label>
+              <select id="aluguel-jogo" name="idJogo" required aria-describedby="idJogo-erro">
+                <option value="">Selecione...</option>
+              </select>
+              <span class="form-error" id="idJogo-erro"></span>
+            </div>
+            <div class="form-field">
+              <label for="dias">Dias de aluguel</label>
+              <input type="number" id="dias" name="dias" min="1" placeholder="7">
+              <span class="hint">Deixe em branco para usar o padrao do jogo.</span>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Alugueis registrados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Cliente</th><th>Jogo</th><th>Inicio</th><th>Devolucao</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody id="alugueis-tbody"></tbody>
+          </table>
+          <p class="table-empty" id="alugueis-vazio">Nenhum aluguel registrado.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/alugueis.js"></script>
+</body>
+</html>
