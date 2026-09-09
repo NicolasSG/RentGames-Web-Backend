@@ -6,9 +6,8 @@
  * campo achatado "nomeJogo" como no mock em localStorage da Etapa 8) e ja
  * vem com "statusDescricao"/"atrasado" calculados no servidor
  * (com.rentgames.model.Aluguel.getStatusDescricao()/isAtrasado(), que o
- * Jackson serializa automaticamente) - por isso usamos esses campos prontos
- * em vez de RentGames.aluguelStatus(...), que dependeria da data do
- * navegador do cliente.
+ * Jackson serializa automaticamente) - usamos esses campos prontos em vez
+ * de recalcular a data no cliente.
  */
 
 (function () {
@@ -42,8 +41,11 @@
     }
 
     function statusBadge(aluguel) {
+      // aluguel.atrasado vem pronto do servidor (Aluguel.isAtrasado(), Etapa 6/9) -
+      // mais confiavel que comparar o texto de statusDescricao (bug corrigido em issues#4:
+      // o texto e "Atrasado!", com exclamacao, e a comparacao antiga usava "Atrasado").
       const status = aluguel.statusDescricao;
-      const classe = status === "Devolvido" ? "badge-neutral" : status === "Atrasado" ? "badge-danger" : "badge-success";
+      const classe = aluguel.devolvido ? "badge-neutral" : aluguel.atrasado ? "badge-danger" : "badge-success";
       return `<span class="badge ${classe}">${status}</span>`;
     }
 

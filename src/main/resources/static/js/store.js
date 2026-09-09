@@ -57,23 +57,6 @@
     return "R$ " + Number(valor).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
-  // Regras replicadas do backend (com.rentgames.model/service) so para
-  // decisao de exibicao no cliente (o servidor e quem realmente aplica
-  // as regras - ver AluguelService/JogoService/TransacaoService).
-  function jogoTemEstoque(jogo) {
-    return jogo.quantidadeEstoque > 0;
-  }
-
-  function aluguelEstaAtrasado(aluguel) {
-    if (aluguel.devolvido) return false;
-    return aluguel.dataDevolucao < hoje();
-  }
-
-  function aluguelStatus(aluguel) {
-    if (aluguel.devolvido) return "Devolvido";
-    return aluguelEstaAtrasado(aluguel) ? "Atrasado" : "Ativo";
-  }
-
   const Jogos = {
     listar() { return requisitar("/jogos"); },
     listarDisponiveis() { return requisitar("/jogos/disponiveis"); },
@@ -165,6 +148,5 @@
   global.RentGames = {
     Jogos, Clientes, Alugueis, Transacoes, Usuarios, Sessao,
     formatarData, formatarMoeda, hoje,
-    jogoTemEstoque, aluguelEstaAtrasado, aluguelStatus,
   };
 })(window);

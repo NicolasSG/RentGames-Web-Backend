@@ -31,8 +31,10 @@
     vazio.hidden = recentes.length > 0;
 
     recentes.forEach((aluguel) => {
+      // ver issues#4: usar os booleanos prontos da API, nao comparar o texto
+      // de statusDescricao ("Atrasado!", com exclamacao).
       const status = aluguel.statusDescricao;
-      const classe = status === "Devolvido" ? "badge-neutral" : status === "Atrasado" ? "badge-danger" : "badge-success";
+      const classe = aluguel.devolvido ? "badge-neutral" : aluguel.atrasado ? "badge-danger" : "badge-success";
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${escapeHtml(aluguel.nomeCliente)}</td>
