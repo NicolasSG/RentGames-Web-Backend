@@ -2,10 +2,13 @@ package com.rentgames.web;
 
 import com.rentgames.model.Usuario;
 import com.rentgames.service.UsuarioService;
+import com.rentgames.service.exception.RegraNegocioException;
+import com.rentgames.web.dto.ErrorResponse;
 import com.rentgames.web.dto.LoginRequest;
 import com.rentgames.web.dto.RegistroRequest;
 import com.rentgames.web.dto.UsuarioResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -25,9 +28,18 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public UsuarioResponse login(@RequestBody LoginRequest request) {
-        Usuario usuario = usuarioService.autenticar(request.email(), request.senha());
-        return UsuarioResponse.de(usuario);
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        // Credenciais invalidas sao 401 (Unauthorized), nao o 409 (Conflict)
+        // que GlobalExceptionHandler usa por padrao para RegraNegocioException
+        // - "e-mail ou senha incorretos" nao e um conflito de estado como
+        // "aluguel ja devolvido". Bug encontrado no teste manual MT-02
+        // (Etapa 7) e registrado em issues#1 do repositorio.
+        try {
+            Usuario usuario = usuarioService.autenticar(request.email(), request.senha());
+            return ResponseEntity.ok(UsuarioResponse.de(usuario));
+        } catch (RegraNegocioException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse(e.getMessage()));
+        }
     }
 
     @PostMapping("/registrar")
